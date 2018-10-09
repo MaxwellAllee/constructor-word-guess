@@ -1,25 +1,29 @@
-var word = "word"
-var array=["w","0","r","d"]
-var guessedLet = "w"
-var wor=""
-function Letter(lets){
-    this.letter = lets;
+// var word = "word"
+// var array=["w","0","r","d"]
+// var guessedLet = "w"
+var word = require('./word')
+function Letter(lett,guess){
+    this.letter = lett;
     this.guessed = false;
     this.printL= function(){
-        if (guessed){
+        this.check()
+        if (this.guessed){
             //console.log(this.letter)
-            wor+=this.letter
+            return this.letter
         }
         else{
-            wor+="-"
+            return "_"
         }
     };
-    this.check = function(){
-         if (guessedLet === this.letter){
-             guessed = true
+    this.check = function(guess){
+        console.log("this worked")
+         if (guess === this.letter){
+             this.guessed = true
              console.log("made it")
          } 
-         this.printL()
+        
     }
    
 }
+
+module.exports = Letter;
